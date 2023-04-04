@@ -10,6 +10,11 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import android.view.Menu
 import android.view.MenuItem
 import com.epam.firetvc.testapp.databinding.ActivityMainBinding
+import com.google.firebase.FirebaseApp
+import com.google.firebase.appcheck.AppCheckProviderFactory
+import com.google.firebase.appcheck.FirebaseAppCheck
+import com.google.firebase.appcheck.debug.DebugAppCheckProviderFactory
+import com.google.firebase.appcheck.playintegrity.PlayIntegrityAppCheckProviderFactory
 
 class MainActivity : AppCompatActivity() {
 
@@ -18,6 +23,20 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        FirebaseApp.initializeApp(this)
+        /**
+         * Since we have added different build variants for the application,
+         * We can use only the Debug token on our Debug build instead to added
+         * on the release app.
+         */
+        val firebaseAppCheck = FirebaseAppCheck.getInstance()
+        val firebaseAppCheckProvider: AppCheckProviderFactory = if (BuildConfig.DEBUG) {
+            DebugAppCheckProviderFactory.getInstance()
+        } else {
+            PlayIntegrityAppCheckProviderFactory.getInstance()
+        }
+        firebaseAppCheck.installAppCheckProviderFactory(firebaseAppCheckProvider)
+
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
