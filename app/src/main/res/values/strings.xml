@@ -9,4 +9,18 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="FirebaseLogoLogin" />
+    <string name="useremail" />
+    <string name="userpassword" />
+    <string name="loginuser" />
+    <string name="forgot_password" />
+    <string name="create_an_account">Create an account</string>
+    <string name="userEmail">Email</string>
+    <string name="userPassword">Password</string>
+    <string name="loginUser">LOGIN</string>
+    <string name="forgotPassword">Forgot password?</string>
+    <string name="google">GOOGLE</string>
+    <string name="btn_phone_number">PHONE NUMBER</string>
+    <string name="btn_MFA">Multifactor Auth</string>
+    <string name="btn_Facebook">Facebook</string>
 </resources>
